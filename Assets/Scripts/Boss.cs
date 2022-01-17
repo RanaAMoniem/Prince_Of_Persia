@@ -13,6 +13,7 @@ public class Boss : MonoBehaviour
     Animator m_Animator;
     BoxCollider m_box;
     bool isFierce;
+    bool isDead;
     public float speed = 1f;
 
     // Start is called before the first frame update
@@ -26,6 +27,7 @@ public class Boss : MonoBehaviour
         m_box = GetComponent<BoxCollider>();
         m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         isFierce = false;
+        isDead = false;
         
 
 }
@@ -39,6 +41,14 @@ public class Boss : MonoBehaviour
 
         transform.LookAt(player.transform);
         Debug.Log(distance);
+        if (isDead)
+        {
+            m_Animator.SetBool("dead", true);
+            m_Animator.SetBool("attack", false);
+            m_Animator.SetBool("fierce", false);
+            m_Animator.SetBool("walk", false);
+            return;
+        }
         if (distance <= 1.6)
         {
             m_Animator.SetBool("walk", false);
@@ -71,7 +81,6 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (Input.GetKeyDown(KeyCode.CapsLock))
         {
             TakeDamage(40);
@@ -82,18 +91,21 @@ public class Boss : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (currentHealth == 0)
+        {
+            Die();
+            return;
+        }
+
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-
-        if(currentHealth <= 80)
+        
+        if (currentHealth <= 80)
         {
             isFierce = true;
             
         }
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
+        
 
     }
 
@@ -104,7 +116,7 @@ public class Boss : MonoBehaviour
 
     void Die()
     {
-        GetComponent<Animator>().SetBool("dead", true);
+        isDead = true;
     }
 
     
