@@ -28,8 +28,11 @@ public class AI : MonoBehaviour
     private Rigidbody[] ragdollRigidBodies;
     public AudioSource zombieGettingHitSound;
     public AudioSource zombieDyingSound;
+    public AudioSource zombieVoiceOver;
+    public AudioSource zombieWalking;
     public Slider slider;
     public GameObject healthBarUI;
+   
 
     public void SearchForPlayer(){
 
@@ -40,6 +43,7 @@ public class AI : MonoBehaviour
                 if(Physics.Linecast(transform.position, fpsc.transform.position, out hit, -1)){
                     
                     if(hit.transform.CompareTag("Player")){
+
                         OnAware(); 
                     }
 
@@ -52,8 +56,10 @@ public class AI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        zombieWalking.Stop();
         zombieGettingHitSound.Stop();
         zombieDyingSound.Stop();
+        zombieVoiceOver.Stop();
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         gameObject.tag = "Zombie";
         wanderPoint = RandomWanderPoint();
@@ -102,7 +108,7 @@ public class AI : MonoBehaviour
                 agent.SetDestination(fpsc.transform.position);
                 animator.SetBool("Aware", true);
                 agent.speed = chaseSpeed;
-
+                
                 
                 
 
@@ -130,7 +136,7 @@ public class AI : MonoBehaviour
 
     public void OnAware(){
         isAware = true;
-        
+        zombieVoiceOver.Play();
         
     }
 
@@ -164,6 +170,15 @@ public class AI : MonoBehaviour
 
         else{
 
+            if(!zombieWalking.isPlaying && Vector3.Distance(fpsc.transform.position, transform.position) < 20f){
+
+                zombieWalking.Play();
+            }
+
+            else if(zombieWalking.isPlaying && Vector3.Distance(fpsc.transform.position, transform.position) > 20f){
+
+                zombieWalking.Stop();
+            }
             if(Vector3.Distance(waypoints[waypointIndex].position, transform.position) < 2f){
                 
                 if(waypointIndex == waypoints.Length - 1){
@@ -212,4 +227,6 @@ public class AI : MonoBehaviour
 
         
     }
+
+
 }
