@@ -27,6 +27,7 @@ public class PlayerExample : MonoBehaviour
         if(other.gameObject.name == "Zombie"){
             
             other.GetComponent<AI>().OnAware();
+            other.GetComponent<AI>().ZombiePunch();
         }
     }
 

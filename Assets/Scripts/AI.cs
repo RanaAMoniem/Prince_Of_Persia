@@ -102,6 +102,8 @@ public class AI : MonoBehaviour
                 agent.SetDestination(fpsc.transform.position);
                 animator.SetBool("Aware", true);
                 agent.speed = chaseSpeed;
+
+                
                 
 
                 
@@ -129,6 +131,12 @@ public class AI : MonoBehaviour
     public void OnAware(){
         isAware = true;
         
+        
+    }
+
+    public void ZombiePunch(){
+
+        animator.Play("ZombiePunch");
     }
 
     public Vector3 RandomWanderPoint(){
