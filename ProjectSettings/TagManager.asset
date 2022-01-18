@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Level1Goal
+  - Level2Goal
   layers:
   - Default
   - TransparentFX
