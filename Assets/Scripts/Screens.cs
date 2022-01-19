@@ -5,20 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class Screens : MonoBehaviour
 {
-    public static bool isPaused = false;
-    public static bool isGameOver = false; // players script elmafro yehotha w ye set it be true lama yeb2a gameover 
+    public  bool isPaused ;
+    public static bool isGameOver = false; // to be removed -- player's script elmafro yehotha w ye set it be true lama yeb2a gameover 
     public GameObject PauseScreen;
     public GameObject GameOverScreen; //
     public GameObject Background;
     public Scene currentScene;
     public AudioSource menuTrack;
+     public AudioSource bossTrack;
+    bool gameOver;
+    /* public ThirdPersonController playerr; // to be added */
 
     private void Start()
     {
         currentScene = SceneManager.GetActiveScene();
+        isPaused = false;
     }
     void Update()
+
     {
+       /*  gameOver = playerr.isGameOver; // to be added */
         if (!isPaused && (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) )
         {
             Pause();
@@ -28,7 +34,13 @@ public class Screens : MonoBehaviour
         if (isGameOver  )
         {
             GameOver();
-        }
+        } //to be removed and replaced with the commented one below 
+
+
+        /*if (gameOver)
+        {
+            GameOver();
+        } */
     }
 
 
@@ -47,8 +59,9 @@ public class Screens : MonoBehaviour
     public void RestartLevel()
     {
         Debug.Log(currentScene.name);
-        SceneManager.LoadScene(currentScene.name); //level 1 
+        SceneManager.LoadScene(currentScene.name); 
         isPaused = false;
+        Time.timeScale = 1f;
     }
 
     public void Pause()
@@ -58,6 +71,7 @@ public class Screens : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
         menuTrack.Play();
+        bossTrack.Stop();
     }
 
     public void Resume()
@@ -67,6 +81,7 @@ public class Screens : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
         menuTrack.Stop();
+        bossTrack.Play();
     }
 
     public void GameOver()
@@ -79,6 +94,7 @@ public class Screens : MonoBehaviour
     public void QuitToMainMenu()
     {
         isPaused = false;
+        menuTrack.Play();
     }
 
 

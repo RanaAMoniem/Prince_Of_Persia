@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Obstacle
+  - Level1Goal
+  - Level2Goal
+  - x
   layers:
   - Default
   - TransparentFX
