@@ -6,11 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RanaLevel2.unity
-    guid: a973064641db64db8b17afe3659efe3b
+    path: Assets/Scenes/Toka.unity
+    guid: 8be872a0a2b864a9f8d1481c1a54ab0a
   - enabled: 1
     path: Assets/Scenes/RanaLevel1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/RanaLevel2.unity
+    guid: a973064641db64db8b17afe3659efe3b
   - enabled: 1
     path: Assets/Scenes/Hoda.unity
     guid: 4b54cd07c6dab47f4a35b22925d1f124
