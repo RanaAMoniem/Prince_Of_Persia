@@ -4,11 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Zombie
   - Obstacle
   - Level1Goal
   - Level2Goal
   - boss
+  - Zombie
+  - sandsOfTime
   layers:
   - Default
   - TransparentFX
