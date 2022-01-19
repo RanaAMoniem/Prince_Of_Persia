@@ -3,13 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Obstacle
-  - Level1Goal
-  - Level2Goal
-  - boss
-  - Zombie
-  - sandsOfTime
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -17,28 +11,6 @@ TagManager:
   - 
   - Water
   - UI
-  - Zombie
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
