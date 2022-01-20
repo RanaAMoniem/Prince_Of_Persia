@@ -15,7 +15,7 @@ public class AI : MonoBehaviour
     public float wanderSpeed = 1.25f;
     public float chaseSpeed = 3f;   
     private bool isAware = false;
-    public float fov = 120f;
+    public float fov = 200f;
     public float viewDistance = 10f;
     private UnityEngine.AI.NavMeshAgent agent;
     public float wanderRadius = 7f;
@@ -33,6 +33,7 @@ public class AI : MonoBehaviour
     public Slider slider;
     public GameObject healthBarUI;
     public GameObject player;
+    // private string walkAudioBeingPlayedBy = "";
 
     public void SearchForPlayer(){
         
@@ -45,7 +46,7 @@ public class AI : MonoBehaviour
                     
                     if(hit.transform.CompareTag("Player")){
 
-                        OnAware(); 
+                        OnAware(false); 
                     }
 
                         
@@ -91,6 +92,7 @@ public class AI : MonoBehaviour
             Die();
             return;
         }
+
         if(Vector3.Distance(transform.position, waypoints[0].position) < 20f){
            
             if(isAware){
@@ -137,10 +139,11 @@ public class AI : MonoBehaviour
         
     }
 
-    public void OnAware(){
+    public void OnAware(bool flag){
         isAware = true;
-        zombieVoiceOver.Play();
-        
+        if(!flag){
+            zombieVoiceOver.Play();
+        }
     }
 
     public void ZombiePunch(){
@@ -173,15 +176,27 @@ public class AI : MonoBehaviour
 
         else{
 
-            if(!zombieWalking.isPlaying && Vector3.Distance(player.transform.position, transform.position) < 20f){
+            
+            // if(walkAudioBeingPlayedBy == "" || walkAudioBeingPlayedBy == transform.parent.name){
+                
+            //     if(!zombieWalking.isPlaying && Vector3.Distance(player.transform.position, transform.position) < 20f){
 
-                zombieWalking.Play();
-            }
+            //         zombieWalking.Play();
+            //         walkAudioBeingPlayedBy = transform.parent.name;
 
-            else if(zombieWalking.isPlaying && Vector3.Distance(player.transform.position, transform.position) > 20f){
+            //     }
+            
+            
+            //     else if(zombieWalking.isPlaying && Vector3.Distance(player.transform.position, transform.position) > 20f){
 
-                zombieWalking.Stop();
-            }
+            //         zombieWalking.Stop();
+            //         walkAudioBeingPlayedBy = "";
+
+                    
+            //     }
+            
+            
+            // }
             if(Vector3.Distance(waypoints[waypointIndex].position, transform.position) < 2f){
                 
                 if(waypointIndex == waypoints.Length - 1){
