@@ -13,7 +13,7 @@ public class AI : MonoBehaviour
     public WanderType wanderType = WanderType.Waypoint;
     public FirstPersonController fpsc;
     public float wanderSpeed = 1.25f;
-    public float chaseSpeed = 3f;   
+    public float chaseSpeed = 3f;
     private bool isAware = false;
     public float fov = 200f;
     public float viewDistance = 10f;
@@ -35,29 +35,40 @@ public class AI : MonoBehaviour
     public GameObject player;
     // private string walkAudioBeingPlayedBy = "";
 
+    public AudioSource ASExploring;
+    bool exploreIsPlaying = false;
+    public AudioSource ASFighting;
+    bool fightIsPlaying = false;
+    bool inFight = false;
+
+
     public void SearchForPlayer(){
-        
-        
+
+
         if(Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(player.transform.position)) < fov / 2f){
 
             if(Vector3.Distance(player.transform.position, transform.position) < viewDistance){
                 RaycastHit hit;
                 if(Physics.Linecast(transform.position, player.transform.position, out hit, -1)){
-                    
+
                     if(hit.transform.CompareTag("Player")){
 
-                        OnAware(false); 
+                        OnAware(false);
                     }
 
-                        
+
                 }
-                    
+
             }
-        }   
+        }
     }
     // Start is called before the first frame update
     void Start()
     {
+        // ASExploring = gameObject.AddComponent<AudioSource>();
+        // ASFighting = gameObject.AddComponent<AudioSource>();
+
+
         zombieWalking.Stop();
         zombieGettingHitSound.Stop();
         zombieDyingSound.Stop();
@@ -81,68 +92,79 @@ public class AI : MonoBehaviour
         }
 
         slider.value = health;
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+
         if(health <=0 ){
             Die();
             return;
         }
 
         if(Vector3.Distance(transform.position, waypoints[0].position) < 20f){
-           
+
             if(isAware){
-                
+
                 // if(Vector3.Distance(transform.position, waypoints[0].position) > 10f){
-                    
+
                 //     // Wander();
                 //     isAware = false;
                 //     waypointIndex = 0;
                 //     // animator.SetBool("Aware", false);
                 //     // agent.speed = wanderSpeed;
-                    
-                    
+
+
                 // }
-                
-                
+
+
                 agent.SetDestination(player.transform.position);
                 animator.SetBool("Aware", true);
                 agent.speed = chaseSpeed;
-                
-                
-                
 
-                
+
             }
             else{
-                
+
                 Wander();
                 SearchForPlayer();
                 animator.SetBool("Aware", false);
                 agent.speed = wanderSpeed;
+
             }
         }
 
         else{
-            
+
             Wander();
             animator.SetBool("Aware", false);
             agent.speed = wanderSpeed;
             isAware = false;
+            if(!isAware){
+              inFight = false;
+            }
         }
 
         slider.value = health;
-        
+
     }
 
     public void OnAware(bool flag){
         isAware = true;
+        inFight = true;
         if(!flag){
             zombieVoiceOver.Play();
+            if(fightIsPlaying == false){
+              ASFighting.Play();
+              fightIsPlaying = true;
+              if(exploreIsPlaying){
+                ASExploring.Stop();
+                exploreIsPlaying = false;
+              }
+
+            }
         }
     }
 
@@ -161,6 +183,16 @@ public class AI : MonoBehaviour
     }
 
     public void Wander(){
+        if(exploreIsPlaying == false && isAware == false && inFight == false){
+
+          ASExploring.Play();
+          exploreIsPlaying = true;
+          if(fightIsPlaying){
+            ASFighting.Stop();
+            fightIsPlaying = false;
+          }
+
+        }
 
         if(wanderType == WanderType.Random){
 
@@ -176,32 +208,32 @@ public class AI : MonoBehaviour
 
         else{
 
-            
+
             // if(walkAudioBeingPlayedBy == "" || walkAudioBeingPlayedBy == transform.parent.name){
-                
+
             //     if(!zombieWalking.isPlaying && Vector3.Distance(player.transform.position, transform.position) < 20f){
 
             //         zombieWalking.Play();
             //         walkAudioBeingPlayedBy = transform.parent.name;
 
             //     }
-            
-            
+
+
             //     else if(zombieWalking.isPlaying && Vector3.Distance(player.transform.position, transform.position) > 20f){
 
             //         zombieWalking.Stop();
             //         walkAudioBeingPlayedBy = "";
 
-                    
+
             //     }
-            
-            
+
+
             // }
             if(Vector3.Distance(waypoints[waypointIndex].position, transform.position) < 2f){
-                
+
                 if(waypointIndex == waypoints.Length - 1){
                     waypointIndex = 0;
-                    
+
                 }
 
                 else{
@@ -243,7 +275,7 @@ public class AI : MonoBehaviour
             rb.isKinematic = false;
         }
 
-        
+
     }
 
 
