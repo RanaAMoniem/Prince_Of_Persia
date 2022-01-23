@@ -115,13 +115,6 @@ public class AI : MonoBehaviour
         {
 
 
-            /*if (Input.GetKeyDown(KeyCode.D))
-            {
-                Die();
-                return;
-            }*/
-
-
 
              if (health <= 0)
               {
