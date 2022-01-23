@@ -123,11 +123,11 @@ public class AI : MonoBehaviour
 
 
 
-            /* if (health <= 0)
+             if (health <= 0)
               {
                   Die();
                   return;
-              } */
+              } 
             
  
 
