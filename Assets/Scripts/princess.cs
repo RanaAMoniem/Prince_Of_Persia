@@ -6,7 +6,7 @@ public class princess : MonoBehaviour
 {
     // Start is called before the first frame update
     Animator p_animator;
-    public ThirdPersonController playerr;
+    public Player_control playerr;
     bool stop;
 
     void Start()

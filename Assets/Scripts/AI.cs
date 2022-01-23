@@ -41,6 +41,10 @@ public class AI : MonoBehaviour
     bool fightIsPlaying = false;
     bool inFight = false;
 
+    public Player_control playerr;
+    bool stop;
+    public GameObject sOT;
+
 
     public void SearchForPlayer(){
 
@@ -95,60 +99,91 @@ public class AI : MonoBehaviour
 
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
+        
+        stop = playerr.activated;
 
-        if(health <=0 ){
-            Die();
-            return;
+        if (stop)
+        {
+            StartAbility();
         }
-
-        if(Vector3.Distance(transform.position, waypoints[0].position) < 20f){
-
-            if(isAware){
-
-                // if(Vector3.Distance(transform.position, waypoints[0].position) > 10f){
-
-                //     // Wander();
-                //     isAware = false;
-                //     waypointIndex = 0;
-                //     // animator.SetBool("Aware", false);
-                //     // agent.speed = wanderSpeed;
+        else
+        {
 
 
-                // }
+            /*if (Input.GetKeyDown(KeyCode.D))
+            {
+                Die();
+                return;
+            }*/
 
 
-                agent.SetDestination(player.transform.position);
-                animator.SetBool("Aware", true);
-                agent.speed = chaseSpeed;
+
+            /* if (health <= 0)
+              {
+                  Die();
+                  return;
+              } */
+            
+ 
+
+              if (Vector3.Distance(transform.position, waypoints[0].position) < 20f)
+                {
+
+                    if (isAware)
+                    {
+
+                        // if(Vector3.Distance(transform.position, waypoints[0].position) > 10f){
+
+                        //     // Wander();
+                        //     isAware = false;
+                        //     waypointIndex = 0;
+                        //     // animator.SetBool("Aware", false);
+                        //     // agent.speed = wanderSpeed;
 
 
-            }
-            else{
+                        // }
 
-                Wander();
-                SearchForPlayer();
-                animator.SetBool("Aware", false);
-                agent.speed = wanderSpeed;
 
-            }
+                        agent.SetDestination(player.transform.position);
+                        animator.SetBool("Aware", true);
+                        agent.speed = chaseSpeed;
+
+
+                    }
+                    else
+                    {
+
+                        Wander();
+                        SearchForPlayer();
+                        animator.SetBool("Aware", false);
+                        agent.speed = wanderSpeed;
+
+                    }
+                }
+
+                else
+                {
+
+                    Wander();
+                    animator.SetBool("Aware", false);
+                    agent.speed = wanderSpeed;
+                    isAware = false;
+                    if (!isAware)
+                    {
+                        inFight = false;
+                    }
+                }
+
+
+                slider.value = health;
+            
+            
         }
-
-        else{
-
-            Wander();
-            animator.SetBool("Aware", false);
-            agent.speed = wanderSpeed;
-            isAware = false;
-            if(!isAware){
-              inFight = false;
-            }
-        }
-
-        slider.value = health;
-
     }
 
     public void OnAware(bool flag){
@@ -275,7 +310,24 @@ public class AI : MonoBehaviour
             rb.isKinematic = false;
         }
 
+        Instantiate(sOT, agent.transform.position, Quaternion.identity);
 
+    }
+
+    IEnumerator SandsOfTime()
+    {
+        animator.enabled = false;
+        agent.speed = 0;
+        yield return new WaitForSeconds(5);
+        animator.enabled = true;
+        agent.speed = 1.5f;
+        
+    }
+
+    void StartAbility()
+    {
+        
+        StartCoroutine(SandsOfTime());
     }
 
 

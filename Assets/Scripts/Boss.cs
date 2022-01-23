@@ -19,7 +19,7 @@ public class Boss : MonoBehaviour
 
 
     public AudioSource bossTrack;
-    public ThirdPersonController playerr; //toka added -- esm el script beta3 player 3and omar(ThirdPersonController)
+    public Player_control playerr; //toka added -- esm el script beta3 player 3and omar(ThirdPersonController)
     bool stop; // toka added 
     public Screens screen;
     bool paused;

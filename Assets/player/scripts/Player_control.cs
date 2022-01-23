@@ -19,6 +19,8 @@ public class Player_control : MonoBehaviour
     public bool activated;
     private int sandOfTime;
 
+    public bool isGameOver;
+
     
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,7 @@ public class Player_control : MonoBehaviour
          attackTrue = false;
          activated = false;
          sandOfTime = 0;
+        isGameOver = false;
     }
 
     public void TakeDamage(int damage)
@@ -67,6 +70,7 @@ public class Player_control : MonoBehaviour
 			if (currentHealth_player <= 0){
             animator.SetTrigger("died");
             playdie = true;
+            isGameOver = true;
 			}
 		}
         void attackbegins(){
@@ -92,6 +96,7 @@ public class Player_control : MonoBehaviour
         if(collision.gameObject.tag == "sandsOfTime"){
                 Destroy(collision.gameObject);
                 sandOfTime+=1;
+            Debug.Log("entered");
         }
         if(collision.gameObject.tag == "obstacle"){
                 // died();

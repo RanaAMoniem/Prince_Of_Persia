@@ -14,7 +14,7 @@ public class Screens : MonoBehaviour
     public AudioSource menuTrack;
      public AudioSource bossTrack;
     bool gameOver;
-    /* public ThirdPersonController playerr; // to be added */
+     public Player_control playerr; // to be added */
 
     private void Start()
     {
@@ -24,23 +24,20 @@ public class Screens : MonoBehaviour
     void Update()
 
     {
-       /*  gameOver = playerr.isGameOver; // to be added */
+         gameOver = playerr.isGameOver; // to be added */
         if (!isPaused && (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) )
         {
             Pause();
             
         }
 
-        if (isGameOver  )
-        {
-            GameOver();
-        } //to be removed and replaced with the commented one below 
+         //to be removed and replaced with the commented one below 
 
 
-        /*if (gameOver)
+        if (gameOver)
         {
             GameOver();
-        } */
+        } 
     }
 
 
@@ -49,7 +46,8 @@ public class Screens : MonoBehaviour
     {
         SceneManager.LoadScene(1); // 1.. 2nd one in queue
         Time.timeScale = 1f;
- }
+        bossTrack.Play();
+    }
 
     public void QuitGame()
     {

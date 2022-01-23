@@ -2658,6 +2658,7 @@ MonoBehaviour:
     m_Handle: 0
   menuTrack: {fileID: 1952013439}
   bossTrack: {fileID: 1757874662}
+  playerr: {fileID: 1111494774}
 --- !u!114 &589269088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4686,7 +4687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4584591c746dd8438695254d8464fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerr: {fileID: 1111494773}
+  playerr: {fileID: 1111494774}
 --- !u!1001 &1037968095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7272,6 +7273,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activated: 0
+--- !u!114 &1111494774 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5561965035318876556, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+  m_PrefabInstance: {fileID: 1111494771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111494772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13750783e562b4bc0951dac98e09674f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1120019059
 GameObject:
   m_ObjectHideFlags: 0
@@ -10067,7 +10079,7 @@ MonoBehaviour:
   healthBar: {fileID: 768029836}
   speed: 1
   bossTrack: {fileID: 1757874662}
-  playerr: {fileID: 1111494773}
+  playerr: {fileID: 1111494774}
   screen: {fileID: 589269087}
 --- !u!82 &1696197802
 AudioSource:
@@ -11464,6 +11476,7 @@ MonoBehaviour:
     m_Handle: 0
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
+  playerr: {fileID: 0}
 --- !u!224 &1912877028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12171,6 +12184,7 @@ MonoBehaviour:
     m_Handle: 0
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
+  playerr: {fileID: 0}
 --- !u!224 &2019693634
 RectTransform:
   m_ObjectHideFlags: 0
