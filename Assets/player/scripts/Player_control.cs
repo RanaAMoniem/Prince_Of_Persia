@@ -22,6 +22,7 @@ public class Player_control : MonoBehaviour
     public bool isGameOver;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +34,6 @@ public class Player_control : MonoBehaviour
         activated = false;
         sandOfTime = 0;
        isGameOver = false;
-
     }
 
     public void TakeDamage(int damage)
@@ -77,8 +77,9 @@ public class Player_control : MonoBehaviour
             animator.SetTrigger("died");
             playdie = true;
             isGameOver = true;
-        }
-    }
+			}
+		}
+        
     void attackbegins()
     {
         attackTrue = true;
@@ -106,6 +107,7 @@ public class Player_control : MonoBehaviour
                 }
             }
         }
+
         if (collision.gameObject.tag == "Zombie")
         {
             if (attackTrue)
@@ -113,10 +115,11 @@ public class Player_control : MonoBehaviour
                 //    zombie.TakeDamage(10);
             }
         }
-        if (collision.gameObject.tag == "sandsOfTime")
-        {
-            Destroy(collision.gameObject);
-            sandOfTime += 1;
+       
+        if(collision.gameObject.tag == "sandsOfTime"){
+                Destroy(collision.gameObject);
+                sandOfTime+=1;
+            Debug.Log("entered");
         }
         if (collision.gameObject.tag == "obstacle")
         {
