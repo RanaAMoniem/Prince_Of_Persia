@@ -6,7 +6,7 @@ public class Obstacles : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public player_control playerr;
+    public ThirdPersonController playerr;
     bool stop;
 
 
