@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Screens : MonoBehaviour
 {
     public  bool isPaused ;
-    public static bool isGameOver = false; // to be removed -- player's script elmafro yehotha w ye set it be true lama yeb2a gameover 
+     // to be removed -- player's script elmafro yehotha w ye set it be true lama yeb2a gameover 
     public GameObject PauseScreen;
     public GameObject GameOverScreen; //
     public GameObject Background;

@@ -13,7 +13,7 @@ public class Player_control : MonoBehaviour
 	public int currentHealth_player;
     public HealthBar_player healthBar;
     public bool playdie;
-    public GameObject boss;
+    public Boss boss;
     public GameObject zombie;
     private bool attackTrue;
     public bool activated;
