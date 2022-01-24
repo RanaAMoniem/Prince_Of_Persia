@@ -1422,7 +1422,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1912877027}
         m_TargetAssemblyTypeName: Screens, Assembly-CSharp
-        m_MethodName: RestartLevel1
+        m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2526,8 +2526,16 @@ PrefabInstance:
       value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 1831517527413812260, guid: 4a2b049d536a94bc8b2a983e04e09d7f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.67834
+      objectReference: {fileID: 0}
+    - target: {fileID: 1831517527413812260, guid: 4a2b049d536a94bc8b2a983e04e09d7f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.73685
+      objectReference: {fileID: 0}
+    - target: {fileID: 1831517527413812260, guid: 4a2b049d536a94bc8b2a983e04e09d7f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.1000061
+      value: -1.4000015
       objectReference: {fileID: 0}
     - target: {fileID: 1831517527413812261, guid: 4a2b049d536a94bc8b2a983e04e09d7f, type: 3}
       propertyPath: m_Sprite
@@ -2886,6 +2894,7 @@ MonoBehaviour:
     m_Handle: 0
   menuTrack: {fileID: 1952013439}
   bossTrack: {fileID: 1757874662}
+  playerr: {fileID: 582978817}
 --- !u!114 &589269088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10075,6 +10084,7 @@ MonoBehaviour:
     m_Handle: 0
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
+  playerr: {fileID: 0}
 --- !u!224 &1912877028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10782,6 +10792,7 @@ MonoBehaviour:
     m_Handle: 0
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
+  playerr: {fileID: 0}
 --- !u!224 &2019693634
 RectTransform:
   m_ObjectHideFlags: 0
