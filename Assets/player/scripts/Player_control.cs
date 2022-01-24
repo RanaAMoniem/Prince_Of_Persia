@@ -10,47 +10,54 @@ public class Player_control : MonoBehaviour
     public AudioSource hit;
     public AudioSource soundOfTime;
     public int maxHealth = 100;
-	public int currentHealth_player;
+    public int currentHealth_player;
     public HealthBar_player healthBar;
     public bool playdie;
     public Boss boss;
     public GameObject zombie;
     private bool attackTrue;
+
+    private bool defendTrue;
     public bool activated;
     private int sandOfTime;
 
     public bool isGameOver;
 
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
-         animator = GetComponent<Animator>(); 
-         currentHealth_player = maxHealth;
-		 healthBar.SetMaxHealth(maxHealth);
-         playdie = false;
-         attackTrue = false;
-         activated = false;
-         sandOfTime = 0;
-        isGameOver = false;
-        
+       animator = GetComponent<Animator>();
+        currentHealth_player = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+        playdie = false;
+        attackTrue = false;
+        activated = false;
+        sandOfTime = 0;
+       isGameOver = false;
+       defendTrue = false;
     }
 
     public void TakeDamage(int damage)
-	{
-		currentHealth_player -= damage;
-		healthBar.SetHealth(currentHealth_player);
-        if(currentHealth_player > 0){
+    {   if(!defendTrue){
+        currentHealth_player -= damage;
+        healthBar.SetHealth(currentHealth_player);
+        if (currentHealth_player > 0)
+        {
             hit.Play();
         }
-        if(playdie == false){
-            if (currentHealth_player <= 0){
-            die.Play();
-			}
+        if (playdie == false)
+        {
+            if (currentHealth_player <= 0)
+            {
+                die.Play();
+            }
         }
-        
-        
-	}
+    }
+
+
+    }
     IEnumerator SandsOfTime()
     {
         Debug.Log("in enum");
@@ -67,93 +74,119 @@ public class Player_control : MonoBehaviour
         StartCoroutine(SandsOfTime());
     }
 
-    void died(){
-			if (currentHealth_player <= 0){
+  private void died()
+    {
+        if (currentHealth_player <= 0)
+        {
             animator.SetTrigger("died");
             playdie = true;
             isGameOver = true;
 			}
-        
-    }
-        void attackbegins(){
-            attackTrue = true;
+		}
+    void defendsend(){
+            defendTrue = false;
         }
 
-        void attackends(){
-            attackTrue = false;
-        }
-       
-        void OnCollisionEnter(Collision collision){
-            if(collision.gameObject.tag == "boss"){
-                if (attackTrue){
-                    //    boss.TakeDamage(10);
-                    Destroy(collision.gameObject);
+    void defendBegins(){
+        defendTrue = true;
+    }
+    void attackbegins()
+    {
+        attackTrue = true;
+        
+    }
+
+    void attackends()
+    {
+        attackTrue = false;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(attackTrue);
+
+        if (collision.gameObject.tag == "boss")
+        {
+            Debug.Log("PLAYER COLLIDES");
+            if (boss.isIdle())
+            {
+               Debug.Log("BOSS IDLE");
+                if (attackTrue)
+                {
+                    Debug.Log("PLAYER ATTACKS BOSS");
+                    boss.TakeDamage(40);
                 }
             }
-             if(collision.gameObject.tag == "Zombie"){
-                if (attackTrue){
-                    //    zombie.TakeDamage(10);
-                }
+        }
+
+        if (collision.gameObject.tag == "Zombie")
+        {
+            if (attackTrue)
+            {
+               ////////////
+            }
         }
         if(collision.gameObject.tag == "sandsOfTime"){
                 Destroy(collision.gameObject);
                 sandOfTime+=1;
             Debug.Log("entered");
         }
-        if(collision.gameObject.tag == "Obstacle"){
+ if(collision.gameObject.tag == "Obstacle"){
             Debug.Log("obstacle detected");
                  died();
             playdie = true;
             isGameOver = true;
                  
-                // gameover
         }
     }
 
 
     // Update is called once per frame
     void Update()
-    {   
-
+    {
         died();
 
         if (Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.S) | Input.GetKeyDown(KeyCode.A)
-		  | Input.GetKeyDown(KeyCode.LeftArrow) | Input.GetKeyDown(KeyCode.RightArrow) | Input.GetKeyDown(KeyCode.UpArrow) | Input.GetKeyDown(KeyCode.DownArrow)) {
-             if(!FootSteps.isPlaying) {
-                 FootSteps.Play();
-             }
-         }
-         if (Input.GetKeyUp(KeyCode.W) | Input.GetKeyUp(KeyCode.D) | Input.GetKeyUp(KeyCode.S) | Input.GetKeyUp(KeyCode.A)
-		  | Input.GetKeyUp(KeyCode.LeftArrow) | Input.GetKeyUp(KeyCode.RightArrow) | Input.GetKeyUp(KeyCode.UpArrow) | Input.GetKeyUp(KeyCode.DownArrow)) {
-             FootSteps.Stop();
-         }
+          | Input.GetKeyDown(KeyCode.LeftArrow) | Input.GetKeyDown(KeyCode.RightArrow) | Input.GetKeyDown(KeyCode.UpArrow) | Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (!FootSteps.isPlaying)
+            {
+                FootSteps.Play();
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.W) | Input.GetKeyUp(KeyCode.D) | Input.GetKeyUp(KeyCode.S) | Input.GetKeyUp(KeyCode.A)
+         | Input.GetKeyUp(KeyCode.LeftArrow) | Input.GetKeyUp(KeyCode.RightArrow) | Input.GetKeyUp(KeyCode.UpArrow) | Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            FootSteps.Stop();
+        }
 
         if (Input.GetKeyDown(KeyCode.R))
             animator.SetTrigger("rolls");
-        
-		  if (Input.GetMouseButtonDown(0))
-          animator.SetTrigger("attacks");
-		  
-		  
-		  if (Input.GetMouseButtonDown(1))
-          animator.SetTrigger("defends");
+
+        if (Input.GetMouseButtonDown(0)){
+            animator.SetTrigger("attacks");
+        }
+
+        if (Input.GetMouseButtonDown(1))
+            animator.SetTrigger("defends");
 
         //   if (Input.GetKeyDown(KeyCode.K)){
         //     TakeDamage(10);
         // }
 
-        if (Input.GetKeyDown(KeyCode.Q)){
-            if(sandOfTime > 0){
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (sandOfTime > 0)
+            {
                 StartAbility();
                 soundOfTime.Play();
-                sandOfTime -=1;
+                sandOfTime -= 1;
             }
         }
-        if (playdie)
+  if (playdie)
         {
             die.Play();
         }
-        
 
     }
 }
