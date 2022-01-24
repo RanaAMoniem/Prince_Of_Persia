@@ -19,6 +19,8 @@ public class Player_control : MonoBehaviour
     public bool activated;
     private int sandOfTime;
 
+    public bool isGameOver;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,7 @@ public class Player_control : MonoBehaviour
         attackTrue = false;
         activated = false;
         sandOfTime = 0;
+       isGameOver = false;
 
     }
 
@@ -73,6 +76,7 @@ public class Player_control : MonoBehaviour
         {
             animator.SetTrigger("died");
             playdie = true;
+            isGameOver = true;
         }
     }
     void attackbegins()
