@@ -28,7 +28,7 @@ public class Acrobatics : MonoBehaviour
             animator.SetBool("WallRunLeft",true);
     
         rb.AddForce(orientation.forward * wallrunForce * Time.deltaTime);
-        rb.AddForce(Vector3.up*wallrunForce*Time.deltaTime*0.35f);
+        rb.AddForce(Vector3.up*wallrunForce*Time.deltaTime*0.1f);
 
 
         //Make sure char sticks to wall
