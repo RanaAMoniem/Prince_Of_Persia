@@ -88,7 +88,7 @@ public class Player_control : MonoBehaviour
 
     void attackends()
     {
-        attackTrue = true;
+        attackTrue = false;
     }
 
     void OnCollisionEnter(Collision collision)
