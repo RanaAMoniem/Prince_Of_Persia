@@ -12,7 +12,7 @@ public class Player_control : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth_player;
     public HealthBar_player healthBar;
-    private bool playdie;
+    public bool playdie;
     public Boss boss;
     public GameObject zombie;
     private bool attackTrue;

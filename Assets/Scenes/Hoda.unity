@@ -10785,9 +10785,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
-  PauseScreen: {fileID: 743707039}
+  PauseScreen: {fileID: 0}
   GameOverScreen: {fileID: 0}
-  Background: {fileID: 1413010439}
+  Background: {fileID: 0}
   currentScene:
     m_Handle: 0
   menuTrack: {fileID: 0}
