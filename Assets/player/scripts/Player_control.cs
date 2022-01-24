@@ -21,6 +21,7 @@ public class Player_control : MonoBehaviour
 
     public bool isGameOver;
 
+<<<<<<< HEAD
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,20 @@ public class Player_control : MonoBehaviour
         sandOfTime = 0;
        isGameOver = false;
 
+=======
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+         animator = GetComponent<Animator>(); 
+         currentHealth_player = maxHealth;
+		 healthBar.SetMaxHealth(maxHealth);
+         playdie = false;
+         attackTrue = false;
+         activated = false;
+         sandOfTime = 0;
+        isGameOver = false;
+>>>>>>> e245c3db02f95bc3b73486bda11e45fbf8098c0d
     }
 
     public void TakeDamage(int damage)
@@ -77,6 +92,13 @@ public class Player_control : MonoBehaviour
             animator.SetTrigger("died");
             playdie = true;
             isGameOver = true;
+<<<<<<< HEAD
+=======
+			}
+		}
+        void attackbegins(){
+            attackTrue = true;
+>>>>>>> e245c3db02f95bc3b73486bda11e45fbf8098c0d
         }
     }
     void attackbegins()
@@ -106,6 +128,7 @@ public class Player_control : MonoBehaviour
                 }
             }
         }
+<<<<<<< HEAD
         if (collision.gameObject.tag == "Zombie")
         {
             if (attackTrue)
@@ -117,6 +140,12 @@ public class Player_control : MonoBehaviour
         {
             Destroy(collision.gameObject);
             sandOfTime += 1;
+=======
+        if(collision.gameObject.tag == "sandsOfTime"){
+                Destroy(collision.gameObject);
+                sandOfTime+=1;
+            Debug.Log("entered");
+>>>>>>> e245c3db02f95bc3b73486bda11e45fbf8098c0d
         }
         if (collision.gameObject.tag == "obstacle")
         {
