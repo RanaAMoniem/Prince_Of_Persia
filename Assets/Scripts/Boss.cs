@@ -13,9 +13,11 @@ public class Boss : MonoBehaviour
     Rigidbody m_Rigidbody;
     Animator m_Animator;
     BoxCollider m_box;
-    bool isFierce;
-    bool isDead;
+    public bool isFierce;
+    public bool isDead;
+    public bool isAttack;
     public float speed = 1f;
+    public bool isCollided;
 
 
     public AudioSource bossTrack;
@@ -24,13 +26,14 @@ public class Boss : MonoBehaviour
     public Screens screen;
     bool paused;
 
-    
+
     //
-                                  //
+    //
 
     // Start is called before the first frame update
     void Start()
     {
+
         player = GameObject.FindGameObjectWithTag("Player");
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
@@ -40,94 +43,43 @@ public class Boss : MonoBehaviour
         m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         isFierce = false;
         isDead = false;
-
+        isAttack = false;
+        isCollided = false;
         bossTrack.Play();
-
-        
-
-        
-        
-
 
     }
     private void FixedUpdate()
-        
+
     {
+        
         stop = playerr.activated; //toka added 
         paused = screen.isPaused;                  // toka added 
-
-        
         if (stop)
         {
             Debug.Log("activated");
-
             m_Animator.enabled = false;
-
-
         }
         else
         {
-            
-
-            m_Animator.enabled = true; // 
-
-
-            Vector3 target = new Vector3((player.transform.position.x + 0.1f), m_Rigidbody.position.y, player.transform.position.z + 0.1f);
-
-            Vector3 newPos = Vector3.MoveTowards(m_Rigidbody.position, target, speed * Time.fixedDeltaTime);
-
-            float distance = Vector3.Distance(player.transform.position, m_Rigidbody.position);
-
-            transform.LookAt(player.transform);
-            Debug.Log(distance);
-
-
+            m_Animator.enabled = true; 
             if (isDead)
             {
                 m_Animator.SetBool("dead", true);
-                m_Animator.SetBool("attack", false);
-                m_Animator.SetBool("fierce", false);
-                m_Animator.SetBool("walk", false);
                 return;
             }
-            if (distance <= 1.6)
+            if (isFierce)
             {
-                m_Animator.SetBool("walk", false);
-                if (isFierce)
-                {
-                    Debug.Log("FIERCE");
-                    m_Animator.SetBool("fierce", true);
-                    m_Animator.SetBool("attack", false);
-                }
-
-                else
-                {
-                    Debug.Log("ATTACK");
-                    m_Animator.SetBool("attack", true);
-                    m_Animator.SetBool("fierce", false);
-
-                }
+                m_Animator.SetBool("fierce", true);
+                m_Animator.SetBool("attack", false);
+                return;
             }
-
-            else
-            {
-                Debug.Log("WALK");
-                m_Animator.SetBool("walk", true);
-                m_Rigidbody.MovePosition(newPos);
-            }
-
-
         }
 
     }
     // Update is called once per frame
     void Update()
     {
-
-        /* if (Input.GetKeyDown(KeyCode.CapsLock))
-         {
-             TakeDamage(40);
-         } */
+        //Debug.Log(isAttack && isCollided);
         paused = screen.isPaused;
 
         if (paused)
@@ -135,38 +87,36 @@ public class Boss : MonoBehaviour
             Debug.Log("firstif");
             bossTrack.Stop();
         }
-       
-
-
-
-
-
     }
 
 
     public void TakeDamage(int damage)
     {
+
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
         if (currentHealth == 0)
         {
             Die();
             return;
         }
-
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
-        
         if (currentHealth <= 80)
         {
             isFierce = true;
-            
-        }
-        
 
+        }
     }
 
     public void AtackPlayer()
     {
-        //player.TakeDamage(10);
+        if (isAttack && isCollided || isFierce && isCollided)
+        {
+            Debug.Log("BOSS ATTACKS PLAYER");
+            playerr.TakeDamage(10);
+        }
+        isCollided = false;
+        isAttack = false;
+       
     }
 
     void Die()
@@ -174,5 +124,20 @@ public class Boss : MonoBehaviour
         isDead = true;
     }
 
-    
+    void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log(collision.collider.tag);
+        if (collision.gameObject.tag == "Player")
+        {
+            isCollided = true;
+
+        }
+    }
+    public bool isIdle()
+    {
+        return m_Animator.GetBool("idle");
+    }
+
+   
+
 }
