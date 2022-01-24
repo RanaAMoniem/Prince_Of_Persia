@@ -16,6 +16,8 @@ public class Player_control : MonoBehaviour
     public Boss boss;
     public GameObject zombie;
     private bool attackTrue;
+
+    private bool defendTrue;
     public bool activated;
     private int sandOfTime;
 
@@ -34,10 +36,11 @@ public class Player_control : MonoBehaviour
         activated = false;
         sandOfTime = 0;
        isGameOver = false;
+       defendTrue = false;
     }
 
     public void TakeDamage(int damage)
-    {
+    {   if(!defendTrue){
         currentHealth_player -= damage;
         healthBar.SetHealth(currentHealth_player);
         if (currentHealth_player > 0)
@@ -51,6 +54,7 @@ public class Player_control : MonoBehaviour
                 die.Play();
             }
         }
+    }
 
 
     }
@@ -79,7 +83,13 @@ public class Player_control : MonoBehaviour
             isGameOver = true;
 			}
 		}
-        
+    void defendsend(){
+            defendTrue = false;
+        }
+
+    void defendBegins(){
+        defendTrue = true;
+    }
     void attackbegins()
     {
         attackTrue = true;
@@ -94,6 +104,7 @@ public class Player_control : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log(attackTrue);
+
         if (collision.gameObject.tag == "boss")
         {
             Debug.Log("PLAYER COLLIDES");
@@ -112,10 +123,9 @@ public class Player_control : MonoBehaviour
         {
             if (attackTrue)
             {
-                //    zombie.TakeDamage(10);
+               ////////////
             }
         }
-       
         if(collision.gameObject.tag == "sandsOfTime"){
                 Destroy(collision.gameObject);
                 sandOfTime+=1;
@@ -151,9 +161,9 @@ public class Player_control : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
             animator.SetTrigger("rolls");
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)){
             animator.SetTrigger("attacks");
-
+        }
 
         if (Input.GetMouseButtonDown(1))
             animator.SetTrigger("defends");
