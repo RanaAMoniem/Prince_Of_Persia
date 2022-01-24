@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Screens : MonoBehaviour
 {
     public  bool isPaused ;
-    public static bool isGameOver = false; // to be removed -- player's script elmafro yehotha w ye set it be true lama yeb2a gameover 
+     // to be removed -- player's script elmafro yehotha w ye set it be true lama yeb2a gameover 
     public GameObject PauseScreen;
     public GameObject GameOverScreen; //
     public GameObject Background;
@@ -16,10 +16,13 @@ public class Screens : MonoBehaviour
     bool gameOver;
      public Player_control playerr; // to be added */
 
+
     private void Start()
     {
         currentScene = SceneManager.GetActiveScene();
         isPaused = false;
+        
+        
     }
     void Update()
 
@@ -36,8 +39,11 @@ public class Screens : MonoBehaviour
 
         if (gameOver)
         {
+            Debug.Log("gowa screen");
+            playerr.playdie = false;
             GameOver();
         } 
+
     }
 
 
@@ -60,6 +66,7 @@ public class Screens : MonoBehaviour
         SceneManager.LoadScene(currentScene.name); 
         isPaused = false;
         Time.timeScale = 1f;
+        menuTrack.Stop();
     }
 
     public void Pause()
@@ -87,12 +94,15 @@ public class Screens : MonoBehaviour
         GameOverScreen.SetActive(true);
         Background.SetActive(true);
         Time.timeScale = 0f;
+        playerr.isGameOver = false;
+        
+
         
     }
     public void QuitToMainMenu()
     {
         isPaused = false;
-        menuTrack.Play();
+        
     }
 
 

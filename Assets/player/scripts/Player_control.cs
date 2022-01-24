@@ -28,7 +28,7 @@ public class Player_control : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+       animator = GetComponent<Animator>();
         currentHealth_player = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         playdie = false;
@@ -74,7 +74,7 @@ public class Player_control : MonoBehaviour
         StartCoroutine(SandsOfTime());
     }
 
-    private void died()
+  private void died()
     {
         if (currentHealth_player <= 0)
         {
@@ -131,10 +131,12 @@ public class Player_control : MonoBehaviour
                 sandOfTime+=1;
             Debug.Log("entered");
         }
-        if (collision.gameObject.tag == "obstacle")
-        {
-            // died();
-            // gameover
+ if(collision.gameObject.tag == "Obstacle"){
+            Debug.Log("obstacle detected");
+                 died();
+            playdie = true;
+            isGameOver = true;
+                 
         }
     }
 
@@ -181,8 +183,10 @@ public class Player_control : MonoBehaviour
                 sandOfTime -= 1;
             }
         }
-
-
+  if (playdie)
+        {
+            die.Play();
+        }
 
     }
 }

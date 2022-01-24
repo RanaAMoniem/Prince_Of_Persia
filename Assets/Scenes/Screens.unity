@@ -904,6 +904,9 @@ MonoBehaviour:
     m_Handle: 0
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
+  playerr: {fileID: 0}
+  slider: {fileID: 0}
+  effectsVol: 0
 --- !u!1 &87413333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,6 +1419,9 @@ MonoBehaviour:
     m_Handle: 0
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
+  playerr: {fileID: 0}
+  slider: {fileID: 0}
+  effectsVol: 0
 --- !u!114 &143296287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2819,13 +2825,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1890311031}
   m_HandleRect: {fileID: 1111074271}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0.197
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 859041922}
+        m_TargetAssemblyTypeName: MixLevels, Assembly-CSharp
+        m_MethodName: setSfx
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &421283793
 GameObject:
   m_ObjectHideFlags: 0
@@ -3961,16 +3979,16 @@ MonoBehaviour:
   m_FillRect: {fileID: 1694125322}
   m_HandleRect: {fileID: 204310834}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 20
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1793618627}
-        m_TargetAssemblyTypeName: volumeValueChange, Assembly-CSharp
-        m_MethodName: SetVolume
+      - m_Target: {fileID: 859041922}
+        m_TargetAssemblyTypeName: MixLevels, Assembly-CSharp
+        m_MethodName: setmusic
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6344,6 +6362,50 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &859041921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 859041923}
+  - component: {fileID: 859041922}
+  m_Layer: 0
+  m_Name: MixerControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &859041922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859041921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569a21213faa6104180b5a9cdd26401e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 24100000, guid: 712116af331455a4c80830d6e143b157, type: 2}
+--- !u!4 &859041923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859041921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 444.766, y: 218.40001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &859760885
 GameObject:
   m_ObjectHideFlags: 0
@@ -8178,6 +8240,9 @@ MonoBehaviour:
     m_Handle: 0
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
+  playerr: {fileID: 0}
+  slider: {fileID: 0}
+  effectsVol: 0
 --- !u!1 &1181432376
 GameObject:
   m_ObjectHideFlags: 0
@@ -10591,6 +10656,9 @@ MonoBehaviour:
     m_Handle: 0
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 1982739719}
+  playerr: {fileID: 0}
+  slider: {fileID: 0}
+  effectsVol: 0
 --- !u!1 &1580972071
 GameObject:
   m_ObjectHideFlags: 0
@@ -11559,13 +11627,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 1681474847}
   m_HandleRect: {fileID: 1181432377}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0.277
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 859041922}
+        m_TargetAssemblyTypeName: MixLevels, Assembly-CSharp
+        m_MethodName: setspeech
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1761239165
 GameObject:
   m_ObjectHideFlags: 0
@@ -11889,6 +11969,9 @@ MonoBehaviour:
     m_Handle: 0
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
+  playerr: {fileID: 0}
+  slider: {fileID: 0}
+  effectsVol: 0
 --- !u!224 &1774746428
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12074,7 +12157,7 @@ AudioSource:
   m_GameObject: {fileID: 1793618624}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -594250057707360161, guid: 712116af331455a4c80830d6e143b157, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7171f9d63bdd2e64d83d1a5b6154787e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -12358,6 +12441,9 @@ MonoBehaviour:
     m_Handle: 0
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
+  playerr: {fileID: 0}
+  slider: {fileID: 0}
+  effectsVol: 0
 --- !u!224 &1821925470
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13741,7 +13827,7 @@ AudioSource:
   m_GameObject: {fileID: 1982739718}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -594250057707360161, guid: 712116af331455a4c80830d6e143b157, type: 2}
   m_audioClip: {fileID: 8300000, guid: 56a9325638887ea44a8b1769c7a18933, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

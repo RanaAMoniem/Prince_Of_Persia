@@ -1643,13 +1643,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 570088607}
   m_HandleRect: {fileID: 409897741}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1550351483}
+        m_TargetAssemblyTypeName: MixLevels, Assembly-CSharp
+        m_MethodName: setspeech
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &198735784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2226,7 +2238,7 @@ AudioSource:
   m_GameObject: {fileID: 252761528}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -594250057707360161, guid: 712116af331455a4c80830d6e143b157, type: 2}
   m_audioClip: {fileID: 8300000, guid: 49fa567737272634ca61bec591dc769c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -3268,6 +3280,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5004409231684470298, guid: a031f102e01d79c408681666118d6a11, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 257358825308026703, guid: 712116af331455a4c80830d6e143b157, type: 2}
     - target: {fileID: 5004409231684470299, guid: a031f102e01d79c408681666118d6a11, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -4160,7 +4176,7 @@ AudioSource:
   m_GameObject: {fileID: 466498279}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -594250057707360161, guid: 712116af331455a4c80830d6e143b157, type: 2}
   m_audioClip: {fileID: 8300000, guid: a888e1ccedb825a418fac61bff52e17c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -6510,6 +6526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieGettingHit
       objectReference: {fileID: 0}
+    - target: {fileID: 5755782624590233607, guid: 26238bd43936b8b48a1ba4b5c1dbd8e9, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8576526063513273001, guid: 712116af331455a4c80830d6e143b157, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26238bd43936b8b48a1ba4b5c1dbd8e9, type: 3}
 --- !u!82 &689778240 stripped
@@ -6840,7 +6860,7 @@ AudioSource:
   m_GameObject: {fileID: 706935337}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -594250057707360161, guid: 712116af331455a4c80830d6e143b157, type: 2}
   m_audioClip: {fileID: 8300000, guid: 7171f9d63bdd2e64d83d1a5b6154787e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.1
@@ -8602,6 +8622,10 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3804512511946396171, guid: 8c49c43b84ef4384990171d3e7a415e2, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8576526063513273001, guid: 712116af331455a4c80830d6e143b157, type: 2}
     - target: {fileID: 3804512511946396180, guid: 8c49c43b84ef4384990171d3e7a415e2, type: 3}
       propertyPath: m_Name
       value: ZombieWalking
@@ -8654,6 +8678,8 @@ MonoBehaviour:
   menuTrack: {fileID: 706935339}
   bossTrack: {fileID: 2117653448}
   playerr: {fileID: 1301957833}
+  slider: {fileID: 0}
+  effectsVol: 0
 --- !u!114 &942797452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9952,6 +9978,8 @@ MonoBehaviour:
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
   playerr: {fileID: 0}
+  slider: {fileID: 0}
+  effectsVol: 0
 --- !u!224 &1180747000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10636,16 +10664,16 @@ MonoBehaviour:
   m_FillRect: {fileID: 459712680}
   m_HandleRect: {fileID: 1828981403}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 706935338}
-        m_TargetAssemblyTypeName: volumeValueChange, Assembly-CSharp
-        m_MethodName: SetVolume
+      - m_Target: {fileID: 1550351483}
+        m_TargetAssemblyTypeName: MixLevels, Assembly-CSharp
+        m_MethodName: setmusic
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11237,6 +11265,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2642389274971807238, guid: f690cc00f59a7e6429a0e690763831b2, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -8576526063513273001, guid: 712116af331455a4c80830d6e143b157, type: 2}
     - target: {fileID: 2642389274971807239, guid: f690cc00f59a7e6429a0e690763831b2, type: 3}
       propertyPath: m_Name
       value: ZombieDying
@@ -11454,6 +11486,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543235923}
   m_CullTransparentMesh: 1
+--- !u!1 &1550351482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1550351484}
+  - component: {fileID: 1550351483}
+  m_Layer: 0
+  m_Name: MixerControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1550351483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550351482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 569a21213faa6104180b5a9cdd26401e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 24100000, guid: 712116af331455a4c80830d6e143b157, type: 2}
+--- !u!4 &1550351484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550351482}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 444.766, y: 218.40001, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1550370182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11699,6 +11775,8 @@ MonoBehaviour:
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
   playerr: {fileID: 0}
+  slider: {fileID: 0}
+  effectsVol: 0
 --- !u!224 &1592996092
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12960,13 +13038,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 337454568}
   m_HandleRect: {fileID: 1543235924}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -60
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1550351483}
+        m_TargetAssemblyTypeName: MixLevels, Assembly-CSharp
+        m_MethodName: setSfx
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1743807429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15858,7 +15948,7 @@ AudioSource:
   m_GameObject: {fileID: 2117653447}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -594250057707360161, guid: 712116af331455a4c80830d6e143b157, type: 2}
   m_audioClip: {fileID: 8300000, guid: 56a9325638887ea44a8b1769c7a18933, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.08
