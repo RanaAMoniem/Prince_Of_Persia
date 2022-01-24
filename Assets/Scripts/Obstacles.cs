@@ -5,8 +5,8 @@ using UnityEngine;
 public class Obstacles : MonoBehaviour
 {
     // Start is called before the first frame update
-   
-    public ThirdPersonController playerr;
+
+    public player_control playerr;
     bool stop;
 
 
@@ -14,9 +14,9 @@ public class Obstacles : MonoBehaviour
 
     void Start()
     {
-       
-       
-        
+
+
+
         obs_an = GetComponent<Animation>();
     }
 
@@ -28,7 +28,7 @@ public class Obstacles : MonoBehaviour
         {
             Debug.Log("gowa el if");
             obs_an.enabled = false;
-            
+
         }
         else
         {
