@@ -77,25 +77,29 @@ public class Player_control : MonoBehaviour
     }
     void attackbegins()
     {
-        Debug.Log("ATTACK BEGINS");
         attackTrue = true;
+        
     }
 
     void attackends()
     {
-        attackTrue = false;
+        attackTrue = true;
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(attackTrue);
         if (collision.gameObject.tag == "boss")
         {
-            Debug.Log("PLAYER COLLIDES WITH BOSS");
-            if (attackTrue)
+            Debug.Log("PLAYER COLLIDES");
+            if (boss.isIdle())
             {
-                Debug.Log("PLAYER COLLIDES AND ATTACKS BOSS");
-                boss.TakeDamage(40);
-                // Destroy(collision.gameObject);
+               Debug.Log("BOSS IDLE");
+                if (attackTrue)
+                {
+                    Debug.Log("PLAYER ATTACKS BOSS");
+                    boss.TakeDamage(40);
+                }
             }
         }
         if (collision.gameObject.tag == "Zombie")
