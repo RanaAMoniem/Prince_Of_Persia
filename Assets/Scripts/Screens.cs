@@ -16,14 +16,12 @@ public class Screens : MonoBehaviour
     bool gameOver;
      public Player_control playerr; // to be added */
 
-    public GameObject slider;
-    public float effectsVol;
 
     private void Start()
     {
         currentScene = SceneManager.GetActiveScene();
         isPaused = false;
-        slider = GameObject.FindGameObjectWithTag("effects");
+        
         
     }
     void Update()

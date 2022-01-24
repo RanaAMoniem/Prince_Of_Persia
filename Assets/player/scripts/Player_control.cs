@@ -32,6 +32,7 @@ public class Player_control : MonoBehaviour
          attackTrue = false;
          activated = false;
          sandOfTime = 0;
+        isGameOver = false;
         
     }
 
