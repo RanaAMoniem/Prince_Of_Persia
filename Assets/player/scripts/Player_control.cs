@@ -12,7 +12,7 @@ public class Player_control : MonoBehaviour
     public int maxHealth = 100;
 	public int currentHealth_player;
     public HealthBar_player healthBar;
-    private bool playdie;
+    public bool playdie;
     public GameObject boss;
     public GameObject zombie;
     private bool attackTrue;
@@ -32,7 +32,7 @@ public class Player_control : MonoBehaviour
          attackTrue = false;
          activated = false;
          sandOfTime = 0;
-        isGameOver = false;
+        
     }
 
     public void TakeDamage(int damage)
@@ -66,13 +66,14 @@ public class Player_control : MonoBehaviour
         StartCoroutine(SandsOfTime());
     }
 
-    private void died(){
+    void died(){
 			if (currentHealth_player <= 0){
             animator.SetTrigger("died");
             playdie = true;
             isGameOver = true;
 			}
-		}
+        
+    }
         void attackbegins(){
             attackTrue = true;
         }
@@ -98,8 +99,12 @@ public class Player_control : MonoBehaviour
                 sandOfTime+=1;
             Debug.Log("entered");
         }
-        if(collision.gameObject.tag == "obstacle"){
-                // died();
+        if(collision.gameObject.tag == "Obstacle"){
+            Debug.Log("obstacle detected");
+                 died();
+            playdie = true;
+            isGameOver = true;
+                 
                 // gameover
         }
     }
@@ -143,7 +148,10 @@ public class Player_control : MonoBehaviour
                 sandOfTime -=1;
             }
         }
-        
+        if (playdie)
+        {
+            die.Play();
+        }
         
 
     }

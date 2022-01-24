@@ -16,10 +16,15 @@ public class Screens : MonoBehaviour
     bool gameOver;
      public Player_control playerr; // to be added */
 
+    public GameObject slider;
+    public float effectsVol;
+
     private void Start()
     {
         currentScene = SceneManager.GetActiveScene();
         isPaused = false;
+        slider = GameObject.FindGameObjectWithTag("effects");
+        
     }
     void Update()
 
@@ -36,8 +41,11 @@ public class Screens : MonoBehaviour
 
         if (gameOver)
         {
+            Debug.Log("gowa screen");
+            playerr.playdie = false;
             GameOver();
         } 
+
     }
 
 
@@ -60,6 +68,7 @@ public class Screens : MonoBehaviour
         SceneManager.LoadScene(currentScene.name); 
         isPaused = false;
         Time.timeScale = 1f;
+        menuTrack.Stop();
     }
 
     public void Pause()
@@ -87,12 +96,15 @@ public class Screens : MonoBehaviour
         GameOverScreen.SetActive(true);
         Background.SetActive(true);
         Time.timeScale = 0f;
+        playerr.isGameOver = false;
+        
+
         
     }
     public void QuitToMainMenu()
     {
         isPaused = false;
-        menuTrack.Play();
+        
     }
 
 
