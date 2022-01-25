@@ -21,10 +21,10 @@ public class Boss_Idle : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-            if (!(animator.GetBool("fierce")))
+        animator.transform.LookAt(player.transform);
+        distance = Vector3.Distance(player.transform.position, m_Rigidbody.position);
+        if (!(animator.GetBool("fierce")))
         {
-            
-            distance = Vector3.Distance(player.transform.position, m_Rigidbody.position);
 
             if (distance <= 1.9)
             {
@@ -39,16 +39,23 @@ public class Boss_Idle : StateMachineBehaviour
                 animator.SetBool("attack", false);
             }
         }
-        
+        else
+        {
+            if (distance > 1.9)
+            {
+                animator.SetBool("walk", true);
+            }
 
 
+
+        }
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
         animator.SetBool("idle", false);
-        
+
     }
 
 }

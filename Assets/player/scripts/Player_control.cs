@@ -116,19 +116,20 @@ public class Player_control : MonoBehaviour
     {
         // Debug.Log(attackTrue);
 
-        if (collision.gameObject.tag == "boss")
-        {
-            Debug.Log("PLAYER COLLIDED WITH BOSS");
-            if (boss.isIdle())
-            {
-               Debug.Log("BOSS IDLE");
-                if (attackTrue)
-                {
-                    Debug.Log("PLAYER ATTACKS BOSS");
-                    boss.TakeDamage(40);
-                }
-            }
-        }
+        //if (collision.gameObject.tag == "boss")
+        //{
+          //  Debug.Log("PLAYER COLLIDED WITH BOSS");
+            //if (boss.isIdle())
+            //{
+              // Debug.Log("BOSS IDLE");
+                //if (attackTrue)
+                //{
+                  //  Debug.Log("PLAYER ATTACKS BOSS");
+                    //boss.TakeDamage(40);
+                   
+               // }
+            //}
+        //}
 
         if (collision.gameObject.tag == "Zombie")
         {
@@ -245,10 +246,10 @@ public class Player_control : MonoBehaviour
      }
         if (collision.gameObject.tag == "boss")
         {
-            Debug.Log("PLAYER STAYED COLLIDED WITH BOSS");
+            //Debug.Log("PLAYER STAYED COLLIDED WITH BOSS");
             if (boss.isIdle())
             {
-                Debug.Log("BOSS STAYED IDLE");
+                //Debug.Log("BOSS STAYED IDLE");
                 if (attackTrue)
                 {
                     Debug.Log("PLAYER STAYED ATTACKS BOSS");

@@ -13,8 +13,8 @@ public class Boss_walk : StateMachineBehaviour
     {
         m_Rigidbody = animator.GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
-        
-       
+        boss = animator.GetComponent<Boss>();
+
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -24,10 +24,17 @@ public class Boss_walk : StateMachineBehaviour
         float distance = Vector3.Distance(player.transform.position, m_Rigidbody.position);
         animator.transform.LookAt(player.transform);
         //Debug.Log(distance);
-        if (distance <= 1.9)
+        //Debug.Log(boss.isFierce);
+        if (distance <= 1.9 && !(boss.isFierce))
         {
             animator.SetBool("attack", true);
-            
+            animator.SetBool("fierce", false);
+
+        }
+        else if (distance <= 1.9 && boss.isFierce)
+        {
+            animator.SetBool("fierce", true);
+            animator.SetBool("attack", false);
         }
 
         else

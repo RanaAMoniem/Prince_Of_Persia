@@ -112,6 +112,10 @@ public class Boss : MonoBehaviour
 
     public void AtackPlayer()
     {
+        Debug.Log("COLLIDED");
+        Debug.Log( isCollided);
+        Debug.Log("ATTACK");
+        Debug.Log(isAttack);
         if (isAttack && isCollided || isFierce && isCollided)
         {
             //Debug.Log("BOSS ATTACKS PLAYER");
@@ -119,7 +123,9 @@ public class Boss : MonoBehaviour
         }
         isCollided = false;
         isAttack = false;
-       
+        isFierce = false;
+
+
     }
 
     void Die()
@@ -127,6 +133,8 @@ public class Boss : MonoBehaviour
         isDead = true;
         
     }
+
+
 
     void OnCollisionEnter(Collision collision)
     {
@@ -138,6 +146,7 @@ public class Boss : MonoBehaviour
 
         }
     }
+
     public bool isIdle()
     {
         return m_Animator.GetBool("idle");
