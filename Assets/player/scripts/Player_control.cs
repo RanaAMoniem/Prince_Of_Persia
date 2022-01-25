@@ -23,12 +23,17 @@ public class Player_control : MonoBehaviour
 
     public bool isGameOver;
 
+
+    public GameObject gameover;
+    bool gameO;
     public GameObject zombie1;
     public GameObject zombie2;
     public GameObject zombie3;
     public GameObject zombie4;
     public AudioSource zombieWalking;
     private bool attacked = false;
+    
+
 
 
 
@@ -83,13 +88,11 @@ public class Player_control : MonoBehaviour
 
     private void died()
     {
-        if (currentHealth_player <= 0)
-        {
+        
             animator.SetTrigger("died");
             playdie = true;
-            isGameOver = true;
-			}
-		}
+
+            }
     void defendsend(){
             defendTrue = false;
         }
@@ -164,7 +167,17 @@ public class Player_control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        died();
+        if (currentHealth_player <= 0)
+        {
+            if (!gameO) {
+                gameO= true;
+                gameover.SetActive(true);
+
+            } died();
+            return;
+            
+        }
+       
 
         if (Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.S) | Input.GetKeyDown(KeyCode.A)
           | Input.GetKeyDown(KeyCode.LeftArrow) | Input.GetKeyDown(KeyCode.RightArrow) | Input.GetKeyDown(KeyCode.UpArrow) | Input.GetKeyDown(KeyCode.DownArrow))

@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1912877027}
+      - m_Target: {fileID: 589269087}
         m_TargetAssemblyTypeName: Screens, Assembly-CSharp
         m_MethodName: RestartLevel
         m_Mode: 1
@@ -2613,6 +2613,10 @@ PrefabInstance:
       propertyPath: boss
       value: 
       objectReference: {fileID: 1696197801}
+    - target: {fileID: 1831517527976925857, guid: 4a2b049d536a94bc8b2a983e04e09d7f, type: 3}
+      propertyPath: gameover
+      value: 
+      objectReference: {fileID: 1912877026}
     - target: {fileID: 1831517527976925859, guid: 4a2b049d536a94bc8b2a983e04e09d7f, type: 3}
       propertyPath: m_Height
       value: 2.1963143
@@ -4830,6 +4834,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 589269087}
+        m_TargetAssemblyTypeName: Screens, Assembly-CSharp
+        m_MethodName: QuitToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1413010439}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &971723021
 MonoBehaviour:
@@ -10153,8 +10181,6 @@ MonoBehaviour:
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
   playerr: {fileID: 0}
-  slider: {fileID: 0}
-  effectsVol: 0
 --- !u!224 &1912877028
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10863,8 +10889,6 @@ MonoBehaviour:
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
   playerr: {fileID: 0}
-  slider: {fileID: 0}
-  effectsVol: 0
 --- !u!224 &2019693634
 RectTransform:
   m_ObjectHideFlags: 0
