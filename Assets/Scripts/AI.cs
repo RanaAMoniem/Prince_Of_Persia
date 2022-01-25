@@ -44,6 +44,7 @@ public class AI : MonoBehaviour
     public Player_control playerr;
     bool stop;
     public GameObject sOT;
+    public bool zombieDied = false;
 
 
     public void SearchForPlayer(){
@@ -115,12 +116,19 @@ public class AI : MonoBehaviour
         {
 
 
+            /*if (Input.GetKeyDown(KeyCode.D))
+            {
+                Die();
+                return;
+            }*/
 
-             if (health <= 0)
+
+
+            if (health <= 0)
               {
                   Die();
                   return;
-              } 
+              }
             
  
 
@@ -272,6 +280,7 @@ public class AI : MonoBehaviour
 
             else{
 
+
                 agent.SetDestination(waypoints[waypointIndex].position);
             }
         }
@@ -287,10 +296,12 @@ public class AI : MonoBehaviour
         else{
 
             zombieDyingSound.Play();
+            
         }
     }
 
     public void Die(){
+        zombieDied = true;
         agent.speed = 0;
         animator.enabled = false;
         slider.value = 0;

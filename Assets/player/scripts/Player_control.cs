@@ -23,15 +23,24 @@ public class Player_control : MonoBehaviour
 
     public bool isGameOver;
 
+
     public GameObject gameover;
     bool gameO;
+    public GameObject zombie1;
+    public GameObject zombie2;
+    public GameObject zombie3;
+    public GameObject zombie4;
+    public AudioSource zombieWalking;
+    private bool attacked = false;
+    
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-       animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         currentHealth_player = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         playdie = false;
@@ -77,7 +86,7 @@ public class Player_control : MonoBehaviour
         StartCoroutine(SandsOfTime());
     }
 
-  private void died()
+    private void died()
     {
         
             animator.SetTrigger("died");
@@ -92,7 +101,8 @@ public class Player_control : MonoBehaviour
         defendTrue = true;
     }
     void attackbegins()
-    {
+    {   
+
         attackTrue = true;
         
     }
@@ -104,7 +114,7 @@ public class Player_control : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(attackTrue);
+        // Debug.Log(attackTrue);
 
         if (collision.gameObject.tag == "boss")
         {
@@ -122,22 +132,34 @@ public class Player_control : MonoBehaviour
 
         if (collision.gameObject.tag == "Zombie")
         {
-            if (attackTrue)
-            {
-               ////////////
+            
+               
+            // Debug.Log(attackTrue);
+            // collision.gameObject.GetComponent<AI>().OnHit(10);
+            
+            if(!collision.gameObject.GetComponent<AI>().zombieDied){
+            if(!attacked){
+                // Debug.Log("HI");
+                collision.gameObject.GetComponent<AI>().OnAware(true);
+                collision.gameObject.GetComponent<AI>().ZombiePunch();
+                TakeDamage(10);
+            
+                StartCoroutine(Timer());
             }
+            // collision.gameObject.GetComponent<AI>().OnAware(true);
+            // collision.gameObject.GetComponent<AI>().ZombiePunch();
+            // TakeDamage(10);
+        }
         }
         if(collision.gameObject.tag == "sandsOfTime"){
                 Destroy(collision.gameObject);
                 sandOfTime+=1;
             Debug.Log("entered");
         }
- if(collision.gameObject.tag == "Obstacle"){
-            Debug.Log("obstacle detected");
-                 died();
-            playdie = true;
-            isGameOver = true;
-                 
+        if (collision.gameObject.tag == "obstacle")
+        {
+            // died();
+            // gameover
         }
     }
 
@@ -176,6 +198,7 @@ public class Player_control : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)){
             animator.SetTrigger("attacks");
+            attackbegins();
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -194,10 +217,42 @@ public class Player_control : MonoBehaviour
                 sandOfTime -= 1;
             }
         }
-  if (playdie)
-        {
-            die.Play();
+
+        if(!zombieWalking.isPlaying && (Vector3.Distance(transform.position, zombie.transform.position) < 20f || Vector3.Distance(transform.position, zombie1.transform.position) < 20f || Vector3.Distance(transform.position, zombie2.transform.position) < 20f || Vector3.Distance(transform.position, zombie3.transform.position) < 20f ||  Vector3.Distance(transform.position, zombie4.transform.position) < 20f)){
+            zombieWalking.Play();
         }
 
+        else if(zombieWalking.isPlaying && (Vector3.Distance(transform.position, zombie.transform.position) > 20f && Vector3.Distance(transform.position, zombie1.transform.position) > 20f && Vector3.Distance(transform.position, zombie2.transform.position) > 20f && Vector3.Distance(transform.position, zombie3.transform.position) > 20f && Vector3.Distance(transform.position, zombie4.transform.position) > 20f)){
+
+            zombieWalking.Stop();
+
+        }
+
+
+
+    }
+
+    void OnCollisionStay(Collision collision){
+        if (collision.gameObject.tag == "Zombie")
+        {
+            Debug.Log(attackTrue);
+              if(attackTrue){
+
+            collision.gameObject.GetComponent<AI>().OnHit(10);
+            attackTrue =false;
+              }
+     }
+
+    }
+
+    private IEnumerator Timer()
+    {
+    
+        attacked = true;
+        yield return new WaitForSeconds (1f);
+
+        attacked = false;
+        
+    
     }
 }
