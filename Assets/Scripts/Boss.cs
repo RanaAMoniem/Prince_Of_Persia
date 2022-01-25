@@ -26,6 +26,8 @@ public class Boss : MonoBehaviour
     public Screens screen;
     bool paused;
 
+    
+
 
     //
     //
@@ -97,6 +99,7 @@ public class Boss : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         if (currentHealth == 0)
         {
+          
             Die();
             return;
         }
@@ -111,7 +114,7 @@ public class Boss : MonoBehaviour
     {
         if (isAttack && isCollided || isFierce && isCollided)
         {
-            Debug.Log("BOSS ATTACKS PLAYER");
+            //Debug.Log("BOSS ATTACKS PLAYER");
             playerr.TakeDamage(10);
         }
         isCollided = false;
@@ -122,6 +125,7 @@ public class Boss : MonoBehaviour
     void Die()
     {
         isDead = true;
+        
     }
 
     void OnCollisionEnter(Collision collision)
@@ -129,7 +133,7 @@ public class Boss : MonoBehaviour
         //Debug.Log(collision.collider.tag);
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("BOSS COLLIDED WITH PLAYER");
+            //Debug.Log("BOSS COLLIDED WITH PLAYER");
             isCollided = true;
 
         }

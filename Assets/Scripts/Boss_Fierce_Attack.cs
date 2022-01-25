@@ -13,8 +13,7 @@ public class Boss_Fierce_Attack : StateMachineBehaviour
     }
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("fierce", false);
-        animator.SetBool("idle", true);
+      
 
     }
 }
