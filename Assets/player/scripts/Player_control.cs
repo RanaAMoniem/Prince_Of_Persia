@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_control : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class Player_control : MonoBehaviour
     public AudioSource zombieWalking;
     private bool attacked = false;
 
+    public Text t1;
+
 
 
 
@@ -49,6 +52,7 @@ public class Player_control : MonoBehaviour
         sandOfTime = 0;
        isGameOver = false;
        defendTrue = false;
+       
     }
 
     public void TakeDamage(int damage)
@@ -155,6 +159,7 @@ public class Player_control : MonoBehaviour
         if(collision.gameObject.tag == "sandsOfTime"){
                 Destroy(collision.gameObject);
                 sandOfTime+=1;
+            t1.text = "Sands Of Time: " + sandOfTime;
             Debug.Log("entered");
         }
         if (collision.gameObject.tag == "Obstacle")
@@ -179,6 +184,7 @@ public class Player_control : MonoBehaviour
             return;
 
         }
+        
 
 
         if (Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.S) | Input.GetKeyDown(KeyCode.A)
