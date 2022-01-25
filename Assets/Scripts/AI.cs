@@ -45,6 +45,7 @@ public class AI : MonoBehaviour
     bool stop;
     public GameObject sOT;
     public bool zombieDied = false;
+    bool produce;
 
 
     public void SearchForPlayer(){
@@ -84,6 +85,7 @@ public class AI : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         ragdollColliders = GetComponentsInChildren<Collider>();
         ragdollRigidBodies = GetComponentsInChildren<Rigidbody>();
+        produce = false;
 
         foreach (Collider col in ragdollColliders){
             if(!col.CompareTag("Zombie")){
@@ -126,6 +128,11 @@ public class AI : MonoBehaviour
 
             if (health <= 0)
               {
+                if (!produce)
+                {
+                    produce = true;
+                    Instantiate(sOT, agent.transform.position, Quaternion.identity);
+                }
                   Die();
                   return;
               }
@@ -314,7 +321,8 @@ public class AI : MonoBehaviour
             rb.isKinematic = false;
         }
 
-        Instantiate(sOT, agent.transform.position, Quaternion.identity);
+        
+        
 
     }
 
