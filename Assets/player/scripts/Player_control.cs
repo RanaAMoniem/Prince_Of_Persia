@@ -23,6 +23,9 @@ public class Player_control : MonoBehaviour
 
     public bool isGameOver;
 
+    public GameObject gameover;
+    bool gameO;
+
 
 
     // Start is called before the first frame update
@@ -76,13 +79,11 @@ public class Player_control : MonoBehaviour
 
   private void died()
     {
-        if (currentHealth_player <= 0)
-        {
+        
             animator.SetTrigger("died");
             playdie = true;
-            isGameOver = true;
-			}
-		}
+
+            }
     void defendsend(){
             defendTrue = false;
         }
@@ -144,7 +145,17 @@ public class Player_control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        died();
+        if (currentHealth_player <= 0)
+        {
+            if (!gameO) {
+                gameO= true;
+                gameover.SetActive(true);
+
+            } died();
+            return;
+            
+        }
+       
 
         if (Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.S) | Input.GetKeyDown(KeyCode.A)
           | Input.GetKeyDown(KeyCode.LeftArrow) | Input.GetKeyDown(KeyCode.RightArrow) | Input.GetKeyDown(KeyCode.UpArrow) | Input.GetKeyDown(KeyCode.DownArrow))

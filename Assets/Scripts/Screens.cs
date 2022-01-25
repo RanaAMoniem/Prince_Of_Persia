@@ -21,6 +21,7 @@ public class Screens : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene();
         isPaused = false;
+        playerr.isGameOver = false;
         
         
     }
@@ -42,6 +43,8 @@ public class Screens : MonoBehaviour
             Debug.Log("gowa screen");
             playerr.playdie = false;
             GameOver();
+            
+            
         } 
 
     }
@@ -96,12 +99,15 @@ public class Screens : MonoBehaviour
         Time.timeScale = 0f;
         playerr.isGameOver = false;
         
+        
 
         
     }
     public void QuitToMainMenu()
     {
         isPaused = false;
+        playerr.isGameOver = false;
+        GameOverScreen.SetActive(false);
         
     }
 

@@ -26,6 +26,8 @@ public class Boss : MonoBehaviour
     public Screens screen;
     bool paused;
 
+    
+
 
     //
     //
@@ -97,6 +99,7 @@ public class Boss : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         if (currentHealth == 0)
         {
+          
             Die();
             return;
         }
@@ -122,6 +125,7 @@ public class Boss : MonoBehaviour
     void Die()
     {
         isDead = true;
+        
     }
 
     void OnCollisionEnter(Collision collision)

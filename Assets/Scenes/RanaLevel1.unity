@@ -8674,6 +8674,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1141749243}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &937097818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10234,8 +10246,6 @@ MonoBehaviour:
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
   playerr: {fileID: 0}
-  slider: {fileID: 0}
-  effectsVol: 0
 --- !u!224 &1074782613
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18832,8 +18842,6 @@ MonoBehaviour:
   menuTrack: {fileID: 601177559}
   bossTrack: {fileID: 78125655}
   playerr: {fileID: 842886467}
-  slider: {fileID: 0}
-  effectsVol: 0
 --- !u!114 &1980647027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19622,6 +19630,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 262
       objectReference: {fileID: 0}
+    - target: {fileID: 1831517527976925857, guid: 4a2b049d536a94bc8b2a983e04e09d7f, type: 3}
+      propertyPath: gameover
+      value: 
+      objectReference: {fileID: 2084195881}
     - target: {fileID: 1831517527976925862, guid: 4a2b049d536a94bc8b2a983e04e09d7f, type: 3}
       propertyPath: m_Name
       value: ThirdPersonController
@@ -20136,8 +20148,6 @@ MonoBehaviour:
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
   playerr: {fileID: 0}
-  slider: {fileID: 0}
-  effectsVol: 0
 --- !u!224 &2084195883
 RectTransform:
   m_ObjectHideFlags: 0

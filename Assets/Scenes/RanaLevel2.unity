@@ -932,6 +932,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1841261664}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &98404485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8678,8 +8690,6 @@ MonoBehaviour:
   menuTrack: {fileID: 706935339}
   bossTrack: {fileID: 2117653448}
   playerr: {fileID: 1301957833}
-  slider: {fileID: 0}
-  effectsVol: 0
 --- !u!114 &942797452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9978,8 +9988,6 @@ MonoBehaviour:
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
   playerr: {fileID: 0}
-  slider: {fileID: 0}
-  effectsVol: 0
 --- !u!224 &1180747000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11775,8 +11783,6 @@ MonoBehaviour:
   menuTrack: {fileID: 0}
   bossTrack: {fileID: 0}
   playerr: {fileID: 0}
-  slider: {fileID: 0}
-  effectsVol: 0
 --- !u!224 &1592996092
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11920,6 +11926,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5561965035318876556, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+      propertyPath: gameover
+      value: 
+      objectReference: {fileID: 1592996090}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
 --- !u!1001 &1623089872
