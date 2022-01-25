@@ -118,7 +118,7 @@ public class Player_control : MonoBehaviour
 
         if (collision.gameObject.tag == "boss")
         {
-            Debug.Log("PLAYER COLLIDES");
+            Debug.Log("PLAYER COLLIDED WITH BOSS");
             if (boss.isIdle())
             {
                Debug.Log("BOSS IDLE");
@@ -242,6 +242,20 @@ public class Player_control : MonoBehaviour
             attackTrue =false;
               }
      }
+        if (collision.gameObject.tag == "boss")
+        {
+            Debug.Log("PLAYER STAYED COLLIDED WITH BOSS");
+            if (boss.isIdle())
+            {
+                Debug.Log("BOSS STAYED IDLE");
+                if (attackTrue)
+                {
+                    Debug.Log("PLAYER STAYED ATTACKS BOSS");
+                    boss.TakeDamage(40);
+                    attackTrue = false;
+                }
+            }
+        }
 
     }
 
