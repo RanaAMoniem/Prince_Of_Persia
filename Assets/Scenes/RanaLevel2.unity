@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44399875, g: 0.4933939, b: 0.57285607, a: 1}
+  m_IndirectSpecularColor: {r: 0.4439991, g: 0.49339467, b: 0.572857, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3373,7 +3373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27227228c0b91b04a949e98f838231a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerr: {fileID: 0}
+  playerr: {fileID: 1866774838}
 --- !u!1001 &376154840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4445,7 +4445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27227228c0b91b04a949e98f838231a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerr: {fileID: 0}
+  playerr: {fileID: 1866774838}
 --- !u!1 &486224628
 GameObject:
   m_ObjectHideFlags: 0
@@ -5871,7 +5871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27227228c0b91b04a949e98f838231a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerr: {fileID: 0}
+  playerr: {fileID: 1866774838}
 --- !u!4 &584133094 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4369136587948190, guid: 18a922dca65836c43849ef211730a035, type: 3}
@@ -6166,7 +6166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27227228c0b91b04a949e98f838231a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerr: {fileID: 0}
+  playerr: {fileID: 1866774838}
 --- !u!1 &622861774
 GameObject:
   m_ObjectHideFlags: 0
@@ -8704,7 +8704,7 @@ MonoBehaviour:
     m_Handle: 0
   menuTrack: {fileID: 706935339}
   bossTrack: {fileID: 2117653448}
-  playerr: {fileID: 0}
+  playerr: {fileID: 1866774838}
 --- !u!114 &942797452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11817,7 +11817,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1081834420532953449, guid: 24c3937f083066241850b3008043b20e, type: 3}
   m_PrefabInstance: {fileID: 1613602041}
   m_PrefabAsset: {fileID: 0}
-
 --- !u!1001 &1623089872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13927,7 +13926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27227228c0b91b04a949e98f838231a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerr: {fileID: 0}
+  playerr: {fileID: 1866774838}
 --- !u!1001 &1866774828
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13983,6 +13982,10 @@ PrefabInstance:
       propertyPath: zombie4
       value: 
       objectReference: {fileID: 1844111673}
+    - target: {fileID: 1831517527976925857, guid: 4a2b049d536a94bc8b2a983e04e09d7f, type: 3}
+      propertyPath: gameover
+      value: 
+      objectReference: {fileID: 1592996090}
     - target: {fileID: 1831517527976925857, guid: 4a2b049d536a94bc8b2a983e04e09d7f, type: 3}
       propertyPath: zombieWalking
       value: 
@@ -15456,7 +15459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27227228c0b91b04a949e98f838231a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerr: {fileID: 0}
+  playerr: {fileID: 1866774838}
 --- !u!1 &2056786087
 GameObject:
   m_ObjectHideFlags: 0
