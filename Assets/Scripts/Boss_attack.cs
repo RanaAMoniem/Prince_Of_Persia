@@ -26,6 +26,7 @@ public class Boss_attack : StateMachineBehaviour
     {
         
         animator.SetBool("attack", false);
+        //boss.isAttack = false;
 
     }
 }
