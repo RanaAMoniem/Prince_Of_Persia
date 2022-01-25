@@ -32,7 +32,7 @@ public class Player_control : MonoBehaviour
     public GameObject zombie4;
     public AudioSource zombieWalking;
     private bool attacked = false;
-    
+
 
 
 
@@ -88,7 +88,7 @@ public class Player_control : MonoBehaviour
 
     private void died()
     {
-        
+
             animator.SetTrigger("died");
             playdie = true;
 
@@ -101,10 +101,10 @@ public class Player_control : MonoBehaviour
         defendTrue = true;
     }
     void attackbegins()
-    {   
+    {
 
         attackTrue = true;
-        
+
     }
 
     void attackends()
@@ -132,18 +132,18 @@ public class Player_control : MonoBehaviour
 
         if (collision.gameObject.tag == "Zombie")
         {
-            
-               
+
+
             // Debug.Log(attackTrue);
             // collision.gameObject.GetComponent<AI>().OnHit(10);
-            
+
             if(!collision.gameObject.GetComponent<AI>().zombieDied){
             if(!attacked){
                 // Debug.Log("HI");
                 collision.gameObject.GetComponent<AI>().OnAware(true);
                 collision.gameObject.GetComponent<AI>().ZombiePunch();
                 TakeDamage(10);
-            
+
                 StartCoroutine(Timer());
             }
             // collision.gameObject.GetComponent<AI>().OnAware(true);
@@ -156,9 +156,10 @@ public class Player_control : MonoBehaviour
                 sandOfTime+=1;
             Debug.Log("entered");
         }
-        if (collision.gameObject.tag == "obstacle")
+        if (collision.gameObject.tag == "Obstacle")
         {
-            // died();
+            currentHealth_player-=100;
+            died();
             // gameover
         }
     }
@@ -175,9 +176,9 @@ public class Player_control : MonoBehaviour
 
             } died();
             return;
-            
+
         }
-       
+
 
         if (Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.S) | Input.GetKeyDown(KeyCode.A)
           | Input.GetKeyDown(KeyCode.LeftArrow) | Input.GetKeyDown(KeyCode.RightArrow) | Input.GetKeyDown(KeyCode.UpArrow) | Input.GetKeyDown(KeyCode.DownArrow))
@@ -261,12 +262,12 @@ public class Player_control : MonoBehaviour
 
     private IEnumerator Timer()
     {
-    
+
         attacked = true;
         yield return new WaitForSeconds (1f);
 
         attacked = false;
-        
-    
+
+
     }
 }
