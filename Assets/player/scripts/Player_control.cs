@@ -107,7 +107,7 @@ public class Player_control : MonoBehaviour
 
         if (collision.gameObject.tag == "boss")
         {
-            Debug.Log("PLAYER COLLIDES");
+            Debug.Log("PLAYER COLLIDED WITH BOSS");
             if (boss.isIdle())
             {
                Debug.Log("BOSS IDLE");
@@ -144,6 +144,7 @@ public class Player_control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         died();
 
         if (Input.GetKeyDown(KeyCode.W) | Input.GetKeyDown(KeyCode.D) | Input.GetKeyDown(KeyCode.S) | Input.GetKeyDown(KeyCode.A)

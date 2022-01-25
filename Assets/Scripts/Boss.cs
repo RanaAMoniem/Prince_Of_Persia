@@ -129,6 +129,7 @@ public class Boss : MonoBehaviour
         //Debug.Log(collision.collider.tag);
         if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("BOSS COLLIDED WITH PLAYER");
             isCollided = true;
 
         }
